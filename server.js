@@ -19,16 +19,19 @@ app.use(
   })
 )
 
+console.log(process.env.PORT)
+console.log(process.env.MONGO_URI)
+
 const Book = mongoose.model("WebDevBooking", schema);
 
-mongoose.connect("mongodb://localhost:27017", {
+mongoose.connect(process.env.MONGO_URI, {
   dbName: "webBooking",
 })
 .then((c)=> console.log(`Database connected with ${c.connection.host}`))
 .catch((e) => console.log(e))
 
-app.listen(4000, ()=>{
-  console.log(`Server is working on port: 4000`);
+app.listen(process.env.PORT, ()=>{
+  console.log(`Server is working on port: ${process.env.PORT}`);
 });
 
 app.post("/", async (req, res)=>{
