@@ -21,9 +21,6 @@ app.use(
   })
 )
 
-console.log(process.env.PORT)
-console.log(process.env.MONGO_URI)
-
 const Book = mongoose.model("WebDevBooking", schema);
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -46,3 +43,7 @@ app.post("/", async (req, res)=>{
     console.error('Error saving user:', error);
   }  
 } )
+
+app.get('/', async (req, res) => {
+  res.send("This is not the main site, it is just the backend.");
+})
