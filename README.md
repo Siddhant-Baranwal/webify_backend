@@ -1,5 +1,8 @@
 # Webify: 
-A site for learning web development for the beginners. This is the backend repo of the project. [This](https://webify-gold.vercel.app/) is the actual site
+A site for learning web development for the beginners. 
+This is the backend repo of the project. 
+[Link](https://github.com/Siddhant-Baranwal/webify_frontend.git) to the frontend repo.
+[This](https://webify-gold.vercel.app/) is the actual site
 
 ## Idea:
 The basic idea of this website is to give the beginners a platform where they get the roadmap for full-stack web development. Morever, they get the videos and documentation of each of the topics. For backend, we have added a donate page where user can donate us his desired amount. And another page for requesting a free counselling class on our site.
