@@ -44,7 +44,7 @@ app.post("/demo", async (req, res)=>{
   const {name, phone} = req.body;
   try {
     await Book.create({ name, phone });
-    res.redirect(`${process.env.FRONTEND_URL}`);
+    res.redirect(process.env.FRONTEND_URL);
   } catch (error) {
     console.error('Error saving user:', error);
   }  
