@@ -44,9 +44,13 @@ app.post("/demo", async (req, res)=>{
   const {name, phone} = req.body;
   try {
     await Book.create({ name, phone });
-    res.redirect(process.env.FRONTEND_URL);
+    res.status(200).json({
+      success: true,
+    });
   } catch (error) {
-    console.error('Error saving user:', error);
+    res.status(400).json({
+      success: false,
+    });
   }  
 } )
 
@@ -68,7 +72,9 @@ app.post('/checkout', async (req, res) => {
     order = await instance.orders.create(options);
   }
   catch(error){
-    console.error('Facing some technical issue:', error);
+    res.status(200).json({
+      success: false,
+    });
   }
   res.status(200).json({
     success: true,
