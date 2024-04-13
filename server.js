@@ -44,7 +44,7 @@ app.post("/demo", async (req, res)=>{
   const {name, phone} = req.body;
   try {
     await Book.create({ name, phone });
-    res.send('Booking confirmed successfully.')
+    res.redirect(`${process.env.FRONTEND_URL}`);
   } catch (error) {
     console.error('Error saving user:', error);
   }  
@@ -81,8 +81,7 @@ app.post('/paymentverification', async (req, res) => {
   const body = razorpay_order_id + "|" + razorpay_payment_id;
   const expectedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_API_SECRET).update(body.toString()).digest('hex');
   const isAuthentic = expectedSignature === razorpay_signature;
-  if(isAuthentic){
-    // Save to Database 
+  if(isAuthentic){ 
     res.redirect(`${process.env.FRONTEND_URL}/paymentsuccess/${razorpay_payment_id}`);
   } else{
     res.status(400).json({
